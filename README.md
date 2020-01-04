@@ -81,3 +81,6 @@ request: 없음
 ## 이후 업데이트 사항 (중요도 순)
 1. 사진 전송 스펙 구현
 2. CSS 적용
+
+## ETC
+- JWT 는 sessionstorage 에 저장

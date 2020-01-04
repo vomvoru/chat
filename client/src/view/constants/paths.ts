@@ -1,3 +1,3 @@
-export const LoginPath = '/';
-export const RoomListPath = '/roomList';
-export const ChatPath = '/chat';
+export const LOGIN_PATH = '/';
+export const ROOM_LIST_PATH = '/roomList';
+export const CHAT_PATH = '/chat/:roomId';

@@ -2,13 +2,17 @@ import React, { FC } from 'react';
 import { useRouteMatch } from 'react-router';
 
 import { ChatPage } from '../pages/ChatPage';
-import { ChatPath } from '../constants/paths';
+import { CHAT_PATH } from '../constants/paths';
+
+interface IParams {
+  roomId: string;
+}
 
 export const ChatRoute: FC = () => {
-  const match = useRouteMatch(ChatPath);
+  const match = useRouteMatch<IParams>(CHAT_PATH);
 
   if (match && match.isExact) {
-    return <ChatPage />;
+    return <ChatPage roomId={match.params.roomId} />;
   }
 
   return null;

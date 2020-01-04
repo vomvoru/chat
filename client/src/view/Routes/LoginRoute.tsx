@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { useRouteMatch } from 'react-router';
 
 import { LoginPage } from '../pages/LoginPage';
-import { LoginPath } from '../constants/paths';
+import { LOGIN_PATH } from '../constants/paths';
 
 export const LoginRoute: FC = () => {
-  const match = useRouteMatch(LoginPath);
+  const match = useRouteMatch(LOGIN_PATH);
 
   if (match && match.isExact) {
     return <LoginPage />;

@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { useRouteMatch } from 'react-router';
 
 import { RoomListPage } from '../pages/RoomListPage';
-import { RoomListPath } from '../constants/paths';
+import { ROOM_LIST_PATH } from '../constants/paths';
 
 export const RoomListRoute: FC = () => {
-  const match = useRouteMatch(RoomListPath);
+  const match = useRouteMatch(ROOM_LIST_PATH);
 
   if (match && match.isExact) {
     return <RoomListPage />;

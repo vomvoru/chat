@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
 const PUBLIC_DIR = path.resolve(__dirname, '../../client/dist');
 
@@ -15,4 +15,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(PUBLIC_DIR, 'index.html'));
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));

@@ -1,9 +1,6 @@
 {
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "baseUrl": "./", 
-    "declaration": true, // .d.ts 파일의 생성 여부
-    "declarationDir": "./dist/", // .d.ts 파일이 생성되는 디렉토리 설정
     "target": "ES2017", 
     "module": "ESNext", 
     "moduleResolution": "node", 
@@ -37,6 +34,10 @@
     "experimentalDecorators": true, 
     "stripInternal": false, 
     "importHelpers": true, 
-    "sourceMap": false
-  }
+    "sourceMap": false,
+
+    "baseUrl": "./", 
+    "declaration": true, // .d.ts 파일의 생성 여부
+    "declarationDir": "./dist/", // .d.ts 파일이 생성되는 디렉토리 설정
+  },
 }

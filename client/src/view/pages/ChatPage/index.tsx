@@ -1,3 +1,11 @@
 import React, { FC } from 'react';
 
-export const ChatPage: FC = () => <div>ChatPage</div>;
+interface IProps {
+  roomId: string;
+}
+
+export const ChatPage: FC<IProps> = ({ roomId }) => (
+  <div>
+    <h1>ChatPage {roomId}</h1>
+  </div>
+);

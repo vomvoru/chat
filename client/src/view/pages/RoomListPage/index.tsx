@@ -1,3 +1,19 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 
-export const RoomListPage: FC = () => <div>RoomListPage</div>;
+import { useRoomList } from './useRoomList';
+import { Room } from './Room';
+
+export const RoomListPage: FC = () => {
+  const roomList = useRoomList();
+
+  return (
+    <>
+      {roomList.map(({ id, name }) => (
+        <Fragment key={id}>
+          <Room roomId={id}>{name}</Room>
+          <br />
+        </Fragment>
+      ))}
+    </>
+  );
+};

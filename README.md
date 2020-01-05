@@ -25,6 +25,8 @@
 ```
 
 # 개발 계획
+기술: WebSocket / React 사용
+
 
 ## UI
 - 최소한으로 (css 없이)
@@ -34,41 +36,54 @@
   - ChatPage: 채팅창 페이지
 
 ## API
-Login / Join Room / Send Message
+Login / Room List
 
-**Login API**
-websocket
-path: /socket/chat 
-request: 'login', { userId: string }
+**Login**
+POST /api/login 
+request: { userId: string }
 response: token (userId 정보가 들어있는 JWT)
 server vaildate: 
-- JWT 무결성 검사
 - userId 3자리 이상 검사
 
-**Join Room**
-websocket
-path: /socket/chat 
-request: 'join', { roomId: string, token: string } (userId 정보가 들어있는 JWT)
-response: token (userId 정보, roomId정보가 들어있는 JWT)
+**Room List**
+GET /api/room
+request: None
+response: { roomList: { id: string, name: string }[] }
+
+## WebSocket
+Join Room / Send Message / Post Message
+공통 namespace: /socket/chat
+```js
+const socket = io('/socket/chat');
+```
+
+**Join Room** 
+socket.emit()
+event name: 'join'
+parameter: , { roomId: string, token: string } (userId 정보가 들어있는 JWT)
+
+response(ack): token (userId 정보, roomId정보가 들어있는 JWT)
 server vaildate: 
 - JWT 무결성 검사
 - roomId정보 포함 여부 및 서버에 있는 roomId가 맞는지 검사
 
 **Send Message**
-websocket
-path: /socket/chat 
-request: 'send message', { message: string, token: string } (userId 정보, roomId정보가 들어있는 JWT)
-response: token (userId 정보, roomId정보가 들어있는 JWT)
+socket.emit()
+event name: 'send message'
+parameter: { message: string, token: string } (userId 정보, roomId정보가 들어있는 JWT)
+
+response(ack): token (userId 정보, roomId정보가 들어있는 JWT)
 server vaildate: 
 - JWT 무결성 검사
 - userId 정보, roomId정보가 들어있는 JWT 가 맞는지 검사
 - message 1자리 이상인지 검사
 
 **Post Message**
-websocket
-path: /socket/chat 
-response: 'add message', { message: string }
-request: 없음
+socket.on()
+event name: 'add message'
+response(ack): { message: string }
+parameter: 없음
+
 
 ## 스펙
 - 사진 전송 스펙은 제외 하고 구현

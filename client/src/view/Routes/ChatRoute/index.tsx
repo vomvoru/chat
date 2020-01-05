@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { useRouteMatch } from 'react-router';
 
-import { ChatPage } from '../pages/ChatPage';
-import { CHAT_PATH } from '../constants/paths';
+import { ChatPage } from '../../Pages/ChatPage';
+import { CHAT_PATH } from '../../../constants/paths';
 
 interface IParams {
   roomId: string;

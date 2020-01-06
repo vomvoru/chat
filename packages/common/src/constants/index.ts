@@ -1,3 +1,3 @@
 import * as api from './api';
 
-export { api };
+export const constants = { api };

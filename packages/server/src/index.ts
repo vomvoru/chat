@@ -2,12 +2,13 @@ import express from 'express';
 import path from 'path';
 import http from 'http';
 import socketIO from 'socket.io';
+import { IRoom, constants, IClientMessage } from 'kakaopay-test-common';
 
 const PORT = 3000;
 const PUBLIC_DIR = path.resolve(__dirname, '../../client/dist');
 const NAMESPACE = '/socket/chat';
 
-const rooms = [
+const rooms: IRoom[] = [
   { id: '1', name: 'A', namespace: `${NAMESPACE}/1` },
   { id: '2', name: 'B', namespace: `${NAMESPACE}/2` },
   { id: '3', name: 'C', namespace: `${NAMESPACE}/3` },
@@ -24,11 +25,7 @@ server.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
 
 app.use(express.static(PUBLIC_DIR));
 
-app.post('/api/login', (req, res) => {
-  res.send({ token: 'token' });
-});
-
-app.get('/api/room', (req, res) => {
+app.get(constants.api.ROOM, (req, res) => {
   res.send(rooms);
 });
 
@@ -40,7 +37,8 @@ const initChatSocket = (nsp: string) => {
   const chatIo = io.of(nsp);
 
   chatIo.on('connection', socket => {
-    socket.on('message', data => {
+    // TODO IClientMessage 타입인 것을 확실히 보장할수 없는 보안, 안정성 이슈 해결
+    socket.on('message', (data: IClientMessage) => {
       chatIo.emit('message', { ...data, id: getID() });
     });
   });

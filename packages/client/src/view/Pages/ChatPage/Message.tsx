@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { IMessage } from 'kakaopay-test-common';
 
 interface IProps extends Pick<IMessage, 'name' | 'text'> {}
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { IRoom } from 'kakaopay-test-common';
 
 import { fetchRoomList } from './api/fetchRoomList';
 

@@ -4,7 +4,7 @@ import { Message } from './Message';
 import { InputTextMessage } from './InputTextMessage';
 import { InputImgMessage } from './InputImgMessage';
 import { useMessages } from '../../../hooks/useMessages';
-import { useRoom } from '../../../hooks/useRoomContext';
+import { useRoom } from '../../../hooks/useRoom';
 
 export const ChatPage: FC = () => {
   const messages = useMessages();

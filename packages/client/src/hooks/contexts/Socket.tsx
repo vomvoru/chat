@@ -1,15 +1,14 @@
+import React, { FC, useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
-import React, { FC, useContext, useState, useEffect } from 'react';
+import { useRoom } from '../useRoom';
 
-import { useRoom } from './useRoomContext';
+type ISocketContext = SocketIOClient.Socket | null;
 
-const SocketContext = React.createContext<SocketIOClient.Socket | null>(null);
-
-export const useSocketContext = () => useContext(SocketContext);
+export const SocketContext = React.createContext<ISocketContext>(null);
 
 export const SocketProvider: FC = ({ children }) => {
-  const [socket, setSocket] = useState<SocketIOClient.Socket | null>(null);
+  const [socket, setSocket] = useState<ISocketContext>(null);
   const room = useRoom();
 
   useEffect(() => {

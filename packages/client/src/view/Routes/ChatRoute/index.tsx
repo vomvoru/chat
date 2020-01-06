@@ -4,7 +4,7 @@ import { useRouteMatch, useHistory } from 'react-router';
 import { ChatPage } from '../../Pages/ChatPage';
 import { CHAT_PATH, HOME_PATH } from '../../../constants/paths';
 import { useUser } from '../../../hooks/useUser';
-import { useRoom } from '../../../hooks/useRoomContext';
+import { useRoom } from '../../../hooks/useRoom';
 
 interface IParams {
   roomId: string;

@@ -1,12 +1,10 @@
-import React, { useEffect, FC, useContext, useState, Dispatch, SetStateAction } from 'react';
+import React, { useEffect, FC, useState, Dispatch, SetStateAction } from 'react';
+import { IRoom } from 'kakaopay-test-common';
 
-import { ROOM } from '../constants/keys';
+import { ROOM } from '../../constants/keys';
 
-const RoomContext = React.createContext<IRoom | null>(null);
-const JoinRoomContext = React.createContext<Dispatch<SetStateAction<IRoom>> | null>(null);
-
-export const useRoom = () => useContext(RoomContext);
-export const useJoinRoom = () => useContext(JoinRoomContext);
+export const RoomContext = React.createContext<IRoom | null>(null);
+export const JoinRoomContext = React.createContext<Dispatch<SetStateAction<IRoom>> | null>(null);
 
 export const RoomProvider: FC = ({ children }) => {
   const [room, joinRoom] = useState<IRoom>(localState);

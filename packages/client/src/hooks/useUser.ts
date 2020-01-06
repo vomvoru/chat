@@ -1,9 +1,5 @@
-import { useUserContext } from './useUserContext';
+import { useContext } from 'react';
 
-export const useUser = () => {
-  const userContext = useUserContext();
+import { UserContext } from './contexts/User';
 
-  if (!userContext) return null;
-
-  return userContext.user;
-};
+export const useUser = () => useContext(UserContext);

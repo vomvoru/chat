@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { IMessage } from 'kakaopay-test-common';
 
-import { useSocketContext } from './useSocketContext';
+import { useSocket } from './useSocket';
 
 export const useMessages = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
-  const socket = useSocketContext();
+  const socket = useSocket();
 
   if (!socket) {
     return [];

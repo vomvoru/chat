@@ -1,10 +1,11 @@
 import { useCallback } from 'react';
+import { IClientMessage } from 'kakaopay-test-common';
 
-import { useSocketContext } from './useSocketContext';
 import { useUser } from './useUser';
+import { useSocket } from './useSocket';
 
 export const useSendMessage = () => {
-  const socket = useSocketContext();
+  const socket = useSocket();
   const user = useUser();
 
   const sendMessage = useCallback(

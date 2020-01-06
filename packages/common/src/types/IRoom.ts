@@ -1,4 +1,4 @@
-interface IRoom {
+export interface IRoom {
   id: string;
   name: string;
   namespace: string;

@@ -6,7 +6,7 @@
   "module": "./src/index.ts",
   "scripts": {
     "build": "webpack",
-    "build:type": "nodemon --watch src -x \"tsc --emitDeclarationOnly\"",
+    "build:type": "tsc --emitDeclarationOnly",
     "dev": "concurrently --kill-others \"npm run build -- -w\" \"npm run build:type\""
   },
   "author": "",

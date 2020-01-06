@@ -9,12 +9,12 @@ export const useSendMessage = () => {
   const user = useUser();
 
   const sendMessage = useCallback(
-    (text: string) => {
+    (type: IClientMessage['type'], text: string) => {
       if (!socket || !user) {
         return;
       }
 
-      const message: IClientMessage = { text, name: user.id };
+      const message: IClientMessage = { text, name: user.id, type };
       socket.emit('message', message);
     },
     [socket, user]

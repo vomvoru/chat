@@ -8,7 +8,7 @@ const PUBLIC_DIR = path.resolve(__dirname, '../../client/dist');
 
 const app = express();
 const server = new http.Server(app);
-const io = socketIO(server);
+const io = socketIO(server).of('/socket/chat');
 
 server.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
 
@@ -37,7 +37,16 @@ app.get('*', (req, res) => {
 
 io.on('connection', socket => {
   socket.emit('news', { hello: 'world' });
-  socket.on('my other event', data => {
-    console.log(data);
+  // socket.on('my other event', data => {
+  //   console.log(data);
+  // });
+
+  socket.on('message', data => {
+    socket.emit('message', { ...data, id: getID() });
   });
 });
+
+const getID = (() => {
+  let id = 0;
+  return () => id++;
+})();

@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from 'react';
 
-import { sendMessage } from '../../../../hooks/api/sendMessage';
+import { useSendMessage } from '../../../../hooks/useSendMessage';
 
 export const useMessage = () => {
   const [message, setMessage] = useState<string>('');
+  const sendMessage = useSendMessage();
 
   const changeHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.currentTarget.value);
@@ -14,9 +15,10 @@ export const useMessage = () => {
   }, []);
 
   const send = useCallback(() => {
+    console.log('send', message);
     sendMessage(message);
     clear();
-  }, [clear, message]);
+  }, [clear, message, sendMessage]);
 
   return { message, changeHandler, send };
 };

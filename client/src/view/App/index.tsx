@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { Routes } from '../Routes';
-import { UserProvider } from '../../hooks/useUserContext';
+import { Providers } from './Providers';
 
-export const App = () => {
+export const App: FC = () => {
   return (
-    <UserProvider>
+    <Providers>
       <Routes />
-    </UserProvider>
+    </Providers>
   );
 };

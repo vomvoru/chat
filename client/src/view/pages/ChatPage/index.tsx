@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import { useMessages } from './useMessages';
 import { Message } from './Message';
 import { InputMessage } from './InputMessage';
+import { useMessages } from '../../../hooks/useMessages';
 
 interface IProps {
   roomId: string;

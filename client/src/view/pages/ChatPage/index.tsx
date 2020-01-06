@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 
 import { Message } from './Message';
-import { InputMessage } from './InputMessage';
+import { InputTextMessage } from './InputTextMessage';
+import { InputImgMessage } from './InputImgMessage';
 import { useMessages } from '../../../hooks/useMessages';
 import { useRoom } from '../../../hooks/useRoomContext';
 
@@ -17,7 +18,8 @@ export const ChatPage: FC = () => {
       {messages.map(({ text, name, id }) => (
         <Message text={text} name={name} key={id} />
       ))}
-      <InputMessage />
+      <InputTextMessage />
+      <InputImgMessage />
     </div>
   );
 };

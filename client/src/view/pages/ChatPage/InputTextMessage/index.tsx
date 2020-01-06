@@ -5,7 +5,7 @@ import { useMessage } from './useMessage';
 
 interface IProps {}
 
-export const InputMessage: FC<IProps> = () => {
+export const InputTextMessage: FC<IProps> = () => {
   const { changeHandler, message, send } = useMessage();
 
   return (

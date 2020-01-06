@@ -3,17 +3,17 @@ import React, { FC } from 'react';
 import { Message } from './Message';
 import { InputMessage } from './InputMessage';
 import { useMessages } from '../../../hooks/useMessages';
+import { useRoom } from '../../../hooks/useRoomContext';
 
-interface IProps {
-  roomId: string;
-}
-
-export const ChatPage: FC<IProps> = ({ roomId }) => {
+export const ChatPage: FC = () => {
   const messages = useMessages();
+  const room = useRoom();
+
+  if (!room) return null;
 
   return (
     <div>
-      <h1>ChatPage {roomId}</h1>
+      <h1>ChatPage {room.name}</h1>
       {messages.map(({ text, name, id }) => (
         <Message text={text} name={name} key={id} />
       ))}

@@ -4,13 +4,13 @@ import { useSocketContext } from './useSocketContext';
 
 export const useMessages = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
-  const socketContext = useSocketContext();
+  const socket = useSocketContext();
 
-  if (!socketContext) {
+  if (!socket) {
     return [];
   }
 
-  socketContext.on('message', (message: IMessage) => setMessages([...messages, message]));
+  socket.on('message', (message: IMessage) => setMessages([...messages, message]));
 
   return messages;
 };

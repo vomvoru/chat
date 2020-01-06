@@ -1,16 +1,18 @@
 import React, { FC, Fragment } from 'react';
 
-import { useRoomList } from './useRoomList';
 import { Room } from './Room';
+import { useRoomList } from '../../../hooks/useRoomList';
 
 export const RoomListPage: FC = () => {
   const roomList = useRoomList();
 
+  if (!roomList) return null;
+
   return (
     <>
-      {roomList.map(({ id, name }) => (
-        <Fragment key={id}>
-          <Room roomId={id}>{name}</Room>
+      {roomList.map(room => (
+        <Fragment key={room.id}>
+          <Room room={room} />
           <br />
         </Fragment>
       ))}

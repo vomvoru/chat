@@ -5,10 +5,20 @@ import socketIO from 'socket.io';
 
 const PORT = 3000;
 const PUBLIC_DIR = path.resolve(__dirname, '../../client/dist');
+const NAMESPACE = '/socket/chat';
+
+const rooms = [
+  { id: '1', name: 'A', namespace: `${NAMESPACE}/1` },
+  { id: '2', name: 'B', namespace: `${NAMESPACE}/2` },
+  { id: '3', name: 'C', namespace: `${NAMESPACE}/3` },
+  { id: '4', name: 'D', namespace: `${NAMESPACE}/4` },
+  { id: '5', name: 'E', namespace: `${NAMESPACE}/5` },
+  { id: '6', name: 'F', namespace: `${NAMESPACE}/6` },
+];
 
 const app = express();
 const server = new http.Server(app);
-const io = socketIO(server).of('/socket/chat');
+const io = socketIO(server);
 
 server.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
 
@@ -19,31 +29,25 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get('/api/room', (req, res) => {
-  res.send([
-    { id: '1', name: 'A' },
-    { id: '2', name: 'B' },
-    { id: '3', name: 'C' },
-    { id: '4', name: 'D' },
-    { id: '5', name: 'E' },
-    { id: '6', name: 'F' },
-  ]);
+  res.send(rooms);
 });
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(PUBLIC_DIR, 'index.html'));
 });
 
-// app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+const initChatSocket = (nsp: string) => {
+  const chatIo = io.of(nsp);
 
-io.on('connection', socket => {
-  socket.emit('news', { hello: 'world' });
-  // socket.on('my other event', data => {
-  //   console.log(data);
-  // });
-
-  socket.on('message', data => {
-    socket.emit('message', { ...data, id: getID() });
+  chatIo.on('connection', socket => {
+    socket.on('message', data => {
+      chatIo.emit('message', { ...data, id: getID() });
+    });
   });
+};
+
+rooms.forEach(room => {
+  initChatSocket(room.namespace);
 });
 
 const getID = (() => {

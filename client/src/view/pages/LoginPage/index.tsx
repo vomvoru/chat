@@ -1,18 +1,18 @@
 import React, { FC, useState, useCallback } from 'react';
 
-import { useUserContext } from '../../../hooks/useUserContext';
+import { useLogin } from '../../../hooks/useLogin';
 
 export const LoginPage: FC = () => {
   const [ID, setID] = useState('');
-  const userContext = useUserContext();
+  const login = useLogin();
 
   const changeHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setID(e.currentTarget.value);
   }, []);
 
   const clickConnect = useCallback(() => {
-    if (userContext) userContext.login({ id: ID });
-  }, [userContext, ID]);
+    if (login) login({ id: ID });
+  }, [login, ID]);
 
   return (
     <div>

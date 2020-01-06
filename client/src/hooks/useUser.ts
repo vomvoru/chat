@@ -1,9 +1,9 @@
 import { useUserContext } from './useUserContext';
 
-export const useLogin = () => {
+export const useUser = () => {
   const userContext = useUserContext();
 
   if (!userContext) return null;
 
-  return userContext.setUser;
+  return userContext.user;
 };

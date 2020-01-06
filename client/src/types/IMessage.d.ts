@@ -3,3 +3,5 @@ interface IMessage {
   text: string;
   id: string;
 }
+
+type IClientMessage = Omit<IMessage, 'id'>;

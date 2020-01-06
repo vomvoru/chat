@@ -15,7 +15,6 @@ export const useMessage = () => {
   }, []);
 
   const send = useCallback(() => {
-    console.log('send', message);
     sendMessage(message);
     clear();
   }, [clear, message, sendMessage]);

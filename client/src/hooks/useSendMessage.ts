@@ -1,22 +1,22 @@
 import { useCallback } from 'react';
 
 import { useSocketContext } from './useSocketContext';
-import { useUserContext } from './useUserContext';
+import { useUser } from './useUser';
 
 export const useSendMessage = () => {
   const socket = useSocketContext();
-  const userContext = useUserContext();
+  const user = useUser();
 
   const sendMessage = useCallback(
     (text: string) => {
-      if (!socket || !userContext || !userContext.user) {
+      if (!socket || !user) {
         return;
       }
 
-      const message: Omit<IMessage, 'id'> = { text, name: userContext.user.id };
+      const message: IClientMessage = { text, name: user.id };
       socket.emit('message', message);
     },
-    [socket, userContext]
+    [socket, user]
   );
 
   return sendMessage;

@@ -41,28 +41,28 @@
 Login / Room List
 
 **Login**
-POST /api/login 
-request: { userId: string }
-response: token (userId 정보가 들어있는 JWT)
-server vaildate: 
+- POST /api/login
+- request: { userId: string }
+- response: token (userId 정보가 들어있는 JWT)
+- server vaildate: 
 - userId 3자리 이상 검사
 
 **Room List**
-GET /api/room
-request: None
-response: { roomList: { id: string, name: string }[] }
+- GET /api/room
+- request: None
+- response: { roomList: { id: string, name: string }[] }
 
 ## WebSocket
-Join Room / Send Message / Post Message
-공통 namespace: /socket/chat
+- Join Room / Send Message / Post Message
+- 공통 namespace: /socket/chat
 ```js
 const socket = io('/socket/chat');
 ```
 
 **Join Room** 
-socket.emit()
-event name: 'join'
-parameter: , { roomId: string, token: string } (userId 정보가 들어있는 JWT)
+- socket.emit()
+- event name: 'join'
+- parameter: , { roomId: string, token: string } (userId 정보가 들어있는 JWT)
 
 response(ack): token (userId 정보, roomId정보가 들어있는 JWT)
 server vaildate: 
@@ -70,9 +70,9 @@ server vaildate:
 - roomId정보 포함 여부 및 서버에 있는 roomId가 맞는지 검사
 
 **Send Message**
-socket.emit()
-event name: 'send message'
-parameter: { message: string, token: string } (userId 정보, roomId정보가 들어있는 JWT)
+- socket.emit()
+- event name: 'send message'
+- parameter: { message: string, token: string } (userId 정보, roomId정보가 들어있는 JWT)
 
 response(ack): token (userId 정보, roomId정보가 들어있는 JWT)
 server vaildate: 
@@ -81,10 +81,10 @@ server vaildate:
 - message 1자리 이상인지 검사
 
 **Post Message**
-socket.on()
-event name: 'add message'
-response(ack): { message: string }
-parameter: 없음
+- socket.on()
+- event name: 'add message'
+- response(ack): { message: string }
+- parameter: 없음
 
 
 ## 스펙

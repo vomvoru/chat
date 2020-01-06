@@ -27,6 +27,8 @@
 # 개발 계획
 기술: WebSocket / React 사용
 
+![architecture](./architecture.jpeg)
+
 
 ## UI
 - 최소한으로 (css 없이)

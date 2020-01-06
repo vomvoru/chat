@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import { useHistory } from 'react-router';
-import { IRoom } from 'kakaopay-test-common';
+import { IRoom } from 'chat-common';
 
 // TODO ../../../ 와 같은 경로 제거를 위해 alias path 적용
 import { ROOM_PATH } from '../../../constants/paths';

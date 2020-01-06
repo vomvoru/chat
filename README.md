@@ -1,103 +1,73 @@
-# 개발 환경 시작
+# Chat
+채팅 App
 
-## install
+# 실행 방법
+**순서에 주의해주세요**
 
-**./client, ./server**
+1. chat-common 패키지 install, build.
 ```shell
+  # ./packages/common 경로에서 실행
   npm install
+  npm run build
 ```
 
-## Build & Start (Watch file)
-
-**./client**
+2. chat-client, chat-server 패키지 install, build.
 ```shell
-  npm run build -- -w
+  # ./packages/client , ./packages/server 경로들에서 실행
+  npm install
+  npm run build
 ```
 
-**./server**
+3. chat-server 패키지 실행
 ```shell
-  npm run build -- -w
-```
-
-**./server**
-```shell
+  # ./packages/server 경로에서 실행
   npm start
 ```
 
-# 개발 계획
-기술: WebSocket / React 사용
 
-![architecture](./architecture.jpeg)
+# 기능
+- [x] 사용자는 첫 진입 시, ID를 입력하여 접속할 수 있다.
+- [x] 채팅방 리스트에서 채팅방을 선택하여 들어갈 수 있다.
+- [ ] 채팅방에 다른 사용자를 초대할 수 있다.
+- [x] 사용자는 채팅방에서 텍스트를 입력할 수 있다.
+- [x] 사용자는 채팅방에서 이미지를 입력할 수 있다.
 
+# Spec
+- Monorepo (use symbolic link)
+  - https://docs.npmjs.com/files/package.json#local-paths
+- Webpack
+- eslint
+- Typescript
 
-## UI
-- 최소한으로 (css 없이)
-- 페이지 목록
-  - LoginPage: Login 하는 페이지
-  - RoomListPage: 방 목록 보여주는 페이지
-  - RoomPage: 채팅창 페이지
+## Spec (Client)
+- SPA
+- React
 
-## API
-Login / Room List
+## Spec (Server)
+- WebSocket (use socket.io)
 
-**Login**
-- POST /api/login
-- request: { userId: string }
-- response: token (userId 정보가 들어있는 JWT)
-- server vaildate: 
-- userId 3자리 이상 검사
+# 파일 구조
 
-**Room List**
-- GET /api/room
-- request: None
-- response: { roomList: { id: string, name: string }[] }
+**chat-client package**
+Client 담당 패키지
+- constants : 상수값들 관리
+- types: 타입 정의
+- Components : 공통 컴포넌트들 (현재 공통 사항 없음)
+- App: 최상위 컴포넌트
+  - Providers: Context Provider 컴포넌트들
+  - Routes: Route 역할 컴포넌트들
+    - Pages: Page Rendering 역할 컴포넌트들
+      - Components: 역할별로 나눠진 컴포넌트들
+        - Hooks: 역할별 로직
+          - api: api 유틸리티 함수 (hooks에 의해 추상화)
+          - context: Context API
 
-## WebSocket
-- Join Room / Send Message / Post Message
-- 공통 namespace: /socket/chat
-```js
-const socket = io('/socket/chat');
-```
+**chat-server package**
+Server 담당 패키지
+index.ts 1개의 단일파일
 
-**Join Room** 
-- socket.emit()
-- event name: 'join'
-- parameter: , { roomId: string, token: string } (userId 정보가 들어있는 JWT)
+**chat-common package**
+Client, Server 공통 코드, 타입 관리 패키지
+- constants : 공통 상수값들
+- types: 공통 타입들 정의
 
-response(ack): token (userId 정보, roomId정보가 들어있는 JWT)
-server vaildate: 
-- JWT 무결성 검사
-- roomId정보 포함 여부 및 서버에 있는 roomId가 맞는지 검사
-
-**Send Message**
-- socket.emit()
-- event name: 'send message'
-- parameter: { message: string, token: string } (userId 정보, roomId정보가 들어있는 JWT)
-
-response(ack): token (userId 정보, roomId정보가 들어있는 JWT)
-server vaildate: 
-- JWT 무결성 검사
-- userId 정보, roomId정보가 들어있는 JWT 가 맞는지 검사
-- message 1자리 이상인지 검사
-
-**Post Message**
-- socket.on()
-- event name: 'add message'
-- response(ack): { message: string }
-- parameter: 없음
-
-
-## 스펙
-- 사진 전송 스펙은 제외 하고 구현
-- 전송 메세지에 XSS 공격이 없는지 검사
-
-## Test Code
-- 필요시마다 작성
-- 유틸 위주
-
-## 이후 업데이트 사항 (중요도 순)
-1. 사진 전송 스펙 구현
-2. CSS 적용
-
-## ETC
-- JWT 는 sessionstorage 에 저장

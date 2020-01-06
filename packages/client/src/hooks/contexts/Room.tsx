@@ -1,5 +1,5 @@
 import React, { useEffect, FC, useState, Dispatch, SetStateAction } from 'react';
-import { IRoom } from 'kakaopay-test-common';
+import { IRoom } from 'chat-common';
 
 import { ROOM } from '../../constants/keys';
 

@@ -1,5 +1,5 @@
 {
-  "name": "kakaopay-test-client",
+  "name": "chat-client",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.0",
-    "kakaopay-test-common": "file:../common",
+    "chat-common": "file:../common",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",

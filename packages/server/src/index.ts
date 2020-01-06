@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import http from 'http';
 import socketIO from 'socket.io';
-import { IRoom, constants, IClientMessage } from 'kakaopay-test-common';
+import { IRoom, constants, IClientMessage } from 'chat-common';
 
 const PORT = 3000;
 const PUBLIC_DIR = path.resolve(__dirname, '../../client/dist');
@@ -21,10 +21,12 @@ const app = express();
 const server = new http.Server(app);
 const io = socketIO(server);
 
+// Server
 server.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
 
 app.use(express.static(PUBLIC_DIR));
 
+// API 들
 app.get(constants.api.ROOM, (req, res) => {
   res.send(rooms);
 });
@@ -33,6 +35,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(PUBLIC_DIR, 'index.html'));
 });
 
+// socket
 const initChatSocket = (nsp: string) => {
   const chatIo = io.of(nsp);
 

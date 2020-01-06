@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { IClientMessage } from 'kakaopay-test-common';
+import { IClientMessage } from 'chat-common';
 
 import { useUser } from './useUser';
 import { useSocket } from './useSocket';

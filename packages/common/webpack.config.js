@@ -6,7 +6,7 @@ const path = require('path');
 
 const babelConfig = require('./babelrc');
 
-const common = require('./tools/webpack/config/webpack.config.common');
+const common = require('./tools/webpack/webpack.config.common');
 
 module.exports = merge(
   {

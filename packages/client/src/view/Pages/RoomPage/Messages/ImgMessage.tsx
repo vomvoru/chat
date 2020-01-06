@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 
 import React, { FC } from 'react';
-import { IMessage } from 'kakaopay-test-common';
+import { IMessage } from 'chat-common';
 
 interface IProps extends Pick<IMessage, 'name' | 'text'> {}
 

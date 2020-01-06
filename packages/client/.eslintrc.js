@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   extends: [
-    './tools/eslint/config/eslintrc.common.js',
+    './tools/eslint/eslintrc.common.js',
   ],
   env: {
     node: true,

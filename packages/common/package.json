@@ -1,13 +1,13 @@
 {
-  "name": "kakaopay-test-common",
+  "name": "chat-common",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
   "module": "./src/index.ts",
   "scripts": {
-    "build": "webpack",
-    "build:type": "tsc --emitDeclarationOnly",
-    "dev": "concurrently --kill-others \"npm run build -- -w\" \"npm run build:type\""
+    "build": "concurrently \"npm run build:bundle\" \"npm run build:type\"",
+    "build:bundle": "webpack",
+    "build:type": "tsc --emitDeclarationOnly"
   },
   "author": "",
   "license": "ISC",

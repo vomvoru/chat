@@ -2,9 +2,9 @@ const path = require('path')
 
 module.exports = {
   extends: [
-    '../tools/eslint/config/eslintrc.common.js',
-    '../tools/eslint/config/eslintrc.react.js',
-    '../tools/eslint/config/eslintrc.typescript'
+    '../tools/eslint/eslintrc.common.js',
+    '../tools/eslint/eslintrc.react.js',
+    '../tools/eslint/eslintrc.typescript'
   ],
   env: {
     browser: true,

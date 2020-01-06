@@ -1,10 +1,16 @@
 import express from 'express';
 import path from 'path';
+import http from 'http';
+import socketIO from 'socket.io';
+
+const PORT = 3000;
+const PUBLIC_DIR = path.resolve(__dirname, '../../client/dist');
 
 const app = express();
-const PORT = 3000;
+const server = new http.Server(app);
+const io = socketIO(server);
 
-const PUBLIC_DIR = path.resolve(__dirname, '../../client/dist');
+server.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
 
 app.use(express.static(PUBLIC_DIR));
 
@@ -27,4 +33,11 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(PUBLIC_DIR, 'index.html'));
 });
 
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+// app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+
+io.on('connection', socket => {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', data => {
+    console.log(data);
+  });
+});

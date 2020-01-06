@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
-import { useRouteMatch } from 'react-router';
+import { useRouteMatch, useHistory } from 'react-router';
 
 import { ChatPage } from '../../Pages/ChatPage';
-import { CHAT_PATH } from '../../../constants/paths';
+import { CHAT_PATH, LOGIN_PATH } from '../../../constants/paths';
+import { useUserContext } from '../../../hooks/useUserContext';
 
 interface IParams {
   roomId: string;
@@ -10,9 +11,16 @@ interface IParams {
 
 export const ChatRoute: FC = () => {
   const match = useRouteMatch<IParams>(CHAT_PATH);
+  const userContext = useUserContext();
+  const history = useHistory();
 
   if (match && match.isExact) {
-    return <ChatPage roomId={match.params.roomId} />;
+    if (userContext && userContext.user) {
+      return <ChatPage roomId={match.params.roomId} />;
+    }
+
+    history.replace(LOGIN_PATH);
+    return null;
   }
 
   return null;

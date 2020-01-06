@@ -11,7 +11,6 @@ export const useLogin = () => {
     }
   }, [user]);
 
-  return {
-    login: setUser,
-  };
+  const login = setUser;
+  return login;
 };

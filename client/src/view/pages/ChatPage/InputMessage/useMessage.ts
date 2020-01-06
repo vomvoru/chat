@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-import { sendMessage } from '../../../api/sendMessage';
+import { sendMessage } from '../../../../hooks/api/sendMessage';
 
 export const useMessage = () => {
   const [message, setMessage] = useState<string>('');

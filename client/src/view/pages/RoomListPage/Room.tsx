@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { CHAT_PATH } from '../../constants/paths';
+import { CHAT_PATH } from '../../../constants/paths';
 
 interface IProps {
   roomId: string;

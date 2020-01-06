@@ -1,14 +1,22 @@
 import React, { FC } from 'react';
-import { useRouteMatch } from 'react-router';
+import { useRouteMatch, useHistory } from 'react-router';
 
 import { RoomListPage } from '../../Pages/RoomListPage';
-import { ROOM_LIST_PATH } from '../../../constants/paths';
+import { ROOM_LIST_PATH, LOGIN_PATH } from '../../../constants/paths';
+import { useUserContext } from '../../../hooks/useUserContext';
 
 export const RoomListRoute: FC = () => {
   const match = useRouteMatch(ROOM_LIST_PATH);
+  const userContext = useUserContext();
+  const history = useHistory();
 
   if (match && match.isExact) {
-    return <RoomListPage />;
+    if (userContext && userContext.user) {
+      return <RoomListPage />;
+    }
+
+    history.replace(LOGIN_PATH);
+    return null;
   }
 
   return null;

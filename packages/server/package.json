@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "kakaopay-test-common": "file:../common",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "uws": "^10.148.1"

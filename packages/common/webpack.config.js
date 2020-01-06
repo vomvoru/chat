@@ -7,7 +7,6 @@ const path = require('path');
 const babelConfig = require('./babelrc');
 
 const common = require('./tools/webpack/config/webpack.config.common');
-const node = require('./tools/webpack/config/webpack.config.node');
 
 module.exports = merge(
   {
@@ -15,7 +14,10 @@ module.exports = merge(
     output: {
       filename: 'index.js',
       path: path.resolve(__dirname, 'dist'),
-      publicPath: '/',
+      libraryTarget: 'umd',
+      globalObject: 'this',
+      // libraryExport: 'default',
+      library: 'common',
     },
     module: {
       rules: [
@@ -30,6 +32,5 @@ module.exports = merge(
       ],
     },
   },
-  common,
-  node
+  common
 );

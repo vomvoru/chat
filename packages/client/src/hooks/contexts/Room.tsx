@@ -4,10 +4,12 @@ import { IRoom } from 'kakaopay-test-common';
 import { ROOM } from '../../constants/keys';
 
 export const RoomContext = React.createContext<IRoom | null>(null);
-export const JoinRoomContext = React.createContext<Dispatch<SetStateAction<IRoom>> | null>(null);
+export const SetRoomContext = React.createContext<Dispatch<SetStateAction<IRoom | null>> | null>(
+  null
+);
 
 export const RoomProvider: FC = ({ children }) => {
-  const [room, joinRoom] = useState<IRoom>(localState);
+  const [room, joinRoom] = useState<IRoom | null>(localState);
 
   useEffect(() => {
     sessionStorage.setItem(ROOM, JSON.stringify(room));
@@ -15,7 +17,7 @@ export const RoomProvider: FC = ({ children }) => {
 
   return (
     <RoomContext.Provider value={room}>
-      <JoinRoomContext.Provider value={joinRoom}>{children}</JoinRoomContext.Provider>
+      <SetRoomContext.Provider value={joinRoom}>{children}</SetRoomContext.Provider>
     </RoomContext.Provider>
   );
 };

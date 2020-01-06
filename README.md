@@ -35,7 +35,7 @@
 - 페이지 목록
   - LoginPage: Login 하는 페이지
   - RoomListPage: 방 목록 보여주는 페이지
-  - ChatPage: 채팅창 페이지
+  - RoomPage: 채팅창 페이지
 
 ## API
 Login / Room List

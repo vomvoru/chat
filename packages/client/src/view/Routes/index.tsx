@@ -3,12 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { LoginRoute } from './LoginRoute';
 import { RoomListRoute } from './RoomListRoute';
-import { ChatRoute } from './ChatRoute';
+import { RoomRoute } from './RoomRoute';
 
 export const Routes: FC = () => (
   <BrowserRouter>
     <LoginRoute />
     <RoomListRoute />
-    <ChatRoute />
+    <RoomRoute />
   </BrowserRouter>
 );

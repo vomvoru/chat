@@ -1,5 +1,5 @@
 import { useContext } from 'react';
 
-import { JoinRoomContext } from './contexts/Room';
+import { SetRoomContext } from './contexts/Room';
 
-export const useJoinRoom = () => useContext(JoinRoomContext);
+export const useJoinRoom = () => useContext(SetRoomContext);

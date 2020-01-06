@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { IRoom } from 'kakaopay-test-common';
 
 // TODO ../../../ 와 같은 경로 제거를 위해 alias path 적용
-import { CHAT_PATH } from '../../../constants/paths';
+import { ROOM_PATH } from '../../../constants/paths';
 import { useJoinRoom } from '../../../hooks/useJoinRoom';
 
 interface IProps {
@@ -17,7 +17,7 @@ export const Room: FC<IProps> = ({ room }) => {
   const clickHandler = useCallback(() => {
     if (joinRoom) {
       joinRoom(room);
-      history.replace(CHAT_PATH);
+      history.replace(ROOM_PATH);
     }
   }, [history, joinRoom, room]);
 

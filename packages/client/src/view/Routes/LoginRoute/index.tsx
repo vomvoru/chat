@@ -10,14 +10,14 @@ export const LoginRoute: FC = () => {
   const user = useUser();
   const history = useHistory();
 
-  if (match && match.isExact) {
-    if (user) {
-      history.replace(ROOM_LIST_PATH);
-      return null;
-    }
-
-    return <LoginPage />;
+  if (!match || !match.isExact) {
+    return null;
   }
 
-  return null;
+  if (user) {
+    history.replace(ROOM_LIST_PATH);
+    return null;
+  }
+
+  return <LoginPage />;
 };

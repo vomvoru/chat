@@ -1,21 +1,13 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 
-import { Room } from './Room';
-import { useRoomList } from '../../../hooks/useRoomList';
+import { RoomList } from './RoomList/index';
+import { Logout } from '../../components/Logout';
 
 export const RoomListPage: FC = () => {
-  const roomList = useRoomList();
-
-  if (!roomList) return null;
-
   return (
     <>
-      {roomList.map(room => (
-        <Fragment key={room.id}>
-          <Room room={room} />
-          <br />
-        </Fragment>
-      ))}
+      <RoomList />
+      <Logout />
     </>
   );
 };

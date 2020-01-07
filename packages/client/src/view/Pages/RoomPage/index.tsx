@@ -5,6 +5,7 @@ import { InputImgMessage } from './InputImgMessage';
 import { useRoom } from '../../../hooks/useRoom';
 import { Messages } from './Messages';
 import { LeaveButton } from './LeaveButton';
+import { Logout } from '../../components/Logout';
 
 export const RoomPage: FC = () => {
   const room = useRoom();
@@ -18,6 +19,7 @@ export const RoomPage: FC = () => {
       <InputTextMessage />
       <InputImgMessage />
       <LeaveButton />
+      <Logout />
     </div>
   );
 };

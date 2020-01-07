@@ -3,8 +3,8 @@ import { useHistory } from 'react-router';
 import { IRoom } from 'chat-common';
 
 // TODO ../../../ 와 같은 경로 제거를 위해 alias path 적용
-import { ROOM_PATH } from '../../../constants/paths';
-import { useJoinRoom } from '../../../hooks/useJoinRoom';
+import { ROOM_PATH } from '../../../../constants/paths';
+import { useJoinRoom } from '../../../../hooks/useJoinRoom';
 
 interface IProps {
   room: IRoom;

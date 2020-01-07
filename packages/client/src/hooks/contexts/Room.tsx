@@ -9,7 +9,7 @@ export const SetRoomContext = React.createContext<Dispatch<SetStateAction<IRoom 
 );
 
 export const RoomProvider: FC = ({ children }) => {
-  const [room, joinRoom] = useState<IRoom | null>(localState);
+  const [room, setRoom] = useState<IRoom | null>(localState);
 
   useEffect(() => {
     sessionStorage.setItem(ROOM, JSON.stringify(room));
@@ -17,7 +17,7 @@ export const RoomProvider: FC = ({ children }) => {
 
   return (
     <RoomContext.Provider value={room}>
-      <SetRoomContext.Provider value={joinRoom}>{children}</SetRoomContext.Provider>
+      <SetRoomContext.Provider value={setRoom}>{children}</SetRoomContext.Provider>
     </RoomContext.Provider>
   );
 };

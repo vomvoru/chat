@@ -49,7 +49,7 @@
 
 # 파일 구조
 
-**chat-client package**
+## chat-client package**
 Client 담당 패키지
 - constants : 상수값들 관리
 - types: 타입 정의
@@ -63,11 +63,11 @@ Client 담당 패키지
           - api: api 유틸리티 함수 (hooks에 의해 추상화)
           - context: Context API
 
-**chat-server package**
+## chat-server package**
 Server 담당 패키지
 index.ts 1개의 단일파일
 
-**chat-common package**
+## chat-common package**
 Client, Server 공통 코드, 타입 관리 패키지
 - constants : 공통 상수값들
 - types: 공통 타입들 정의

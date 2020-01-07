@@ -50,7 +50,7 @@
 # 파일 구조
 
 ## chat-client package
-Client 담당 패키지
+Client 패키지
 - constants : 상수값들 관리
 - types: 타입 정의
 - Components : 공통 컴포넌트들 (현재 공통 사항 없음)
@@ -65,12 +65,12 @@ Client 담당 패키지
 
 
 ## chat-server package
-Server 담당 패키지
+Server 패키지
 index.ts 1개의 단일파일
 
 
 ## chat-common package
-Client, Server 공통 코드, 타입 관리 패키지
+Client, Server 공통 코드 & 타입 패키지
 - constants : 공통 상수값들
 - types: 공통 타입들 정의
 

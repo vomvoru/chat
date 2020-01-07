@@ -66,7 +66,7 @@ Client 패키지
 
 ## chat-server package
 Server 패키지
-index.ts 1개의 단일파일
+- index.ts 1개의 단일파일
 
 
 ## chat-common package

@@ -35,7 +35,7 @@ module.exports = merge(
       ],
     },
   },
-  common, // TODO common 제거 가능한지 여부 검사하여 정리
+  common,
   browser,
   font,
   htmlTemplate,
